@@ -5231,29 +5231,33 @@
         }
        @media only screen and (max-width: 768px) {
 
-            .ladi-wraper {
-
-                width: 960px !important; 
-
-                zoom: 0.42;
-
-                margin: 0 auto !important;
-
-                left: 50% !important;
-
-                transform: translateX(-50%);
-
-                position: absolute !important;
-
-            }
-
-            body, html {
+            body {
 
                 overflow-x: hidden !important;
 
                 width: 100vw !important;
 
-                position: relative;
+                position: relative !important;
+
+                margin: 0 !important;
+
+                padding: 0 !important;
+
+            }
+
+            .ladi-wraper {
+
+                width: 960px !important;
+
+                position: absolute !important;
+
+                top: 0 !important;
+
+                left: 50% !important;
+
+                transform: scale(0.4) translateX(-50%) !important; 
+
+                transform-origin: top left !important;
 
             }
 
