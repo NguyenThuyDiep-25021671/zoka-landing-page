@@ -3,6 +3,7 @@
 <html lang="vi">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Túi du lịch da Microfiber</title>
     <meta http-equiv="Cache-Control" content="no-cache">
@@ -4190,8 +4191,19 @@
             display: none !important; 
 
         }
-        #BOX1, #BOX2, #BOX5, #PARAGRAPH1, #PARAGRAPH2, #PARAGRAPH3, #PARAGRAPH4, #BUTTON2 {z-index: 999 !important;}
-
+        #BOX1, #BOX2, #BOX5, #PARAGRAPH1, #PARAGRAPH2, #PARAGRAPH3, #PARAGRAPH4, #BUTTON2, #PARAGRAPH6 {z-index: 999 !important;}
+        @media only screen and (max-width: 768px) {
+            body, html {
+                overflow-x: hidden;
+                width: 100vw;
+            }
+    
+            .ladi-section, .ladi-container, img {
+                max-width: 100% !important;
+                height: auto !important;
+                left: 0 !important; 
+            }
+        }
     </style>
 </head>
 
@@ -4991,7 +5003,8 @@
                                 <div class="ladi-form-item-background ladi-lazyload"></div>
                                 <div class="ladi-form-item"><input autocomplete="off" tabindex="1" name="name"
                                         required="" class="ladi-form-control" type="text" placeholder="Họ và Tên"
-                                        value="" fdprocessedid="jcv2vp"></div>
+                                        value="" fdprocessedid="jcv2vp" required>
+                                </div>
                             </div>
                         </div>
                         <div id="FORM_ITEM12" class="ladi-element">
@@ -4999,7 +5012,8 @@
                                 <div class="ladi-form-item-background ladi-lazyload"></div>
                                 <div class="ladi-form-item"><input autocomplete="off" tabindex="3" name="phone"
                                         required="" class="ladi-form-control" type="tel" placeholder="Số điện thoại"
-                                        pattern="(\+84|0)(9|8|7|5|3)[0-9]{8}" value="" fdprocessedid="i75apbb"></div>
+                                        pattern="(\+84|0)(9|8|7|5|3)[0-9]{8}" value="" fdprocessedid="i75apbb" required>
+                                </div>
                             </div>
                         </div>
                         <div id="FORM_ITEM14" class="ladi-element">
@@ -5007,7 +5021,8 @@
                                 <div class="ladi-form-item-background ladi-lazyload"></div>
                                 <div class="ladi-form-item"><input autocomplete="off" tabindex="5" name="address"
                                         required="" class="ladi-form-control" type="text"
-                                        placeholder="Địa chỉ cũ chưa xác nhập" value="" fdprocessedid="h0mhlp"></div>
+                                        placeholder="Địa chỉ cũ chưa xác nhập" value="" fdprocessedid="h0mhlp" required>
+                                </div>
                             </div>
                         </div>
                         <div id="FORM_ITEM19" class="ladi-element">
@@ -5016,14 +5031,14 @@
                                 <div class="ladi-form-item ladi-form-checkbox ladi-form-checkbox-vertical"
                                     ladi-checkbox-required="true">
                                     <div class="ladi-form-checkbox-box-item">
-                                        <div class="ladi-form-checkbox-item"><input tabindex="5" name="màu"
-                                                type="checkbox" value="Màu đen"><span data-checked="false">Màu
+                                        <div class="ladi-form-checkbox-item"><input tabindex="5" name="mau_sac"
+                                                type="radio" value="Màu đen" required><span data-checked="false">Màu
                                                 đen</span></div>
-                                        <div class="ladi-form-checkbox-item"><input tabindex="5" name="màu"
-                                                type="checkbox" value="Màu nâu"><span data-checked="false">Màu
+                                        <div class="ladi-form-checkbox-item"><input tabindex="5" name="mau_sac"
+                                                type="radio" value="Màu nâu" required><span data-checked="false">Màu
                                                 nâu</span></div>
-                                        <div class="ladi-form-checkbox-item"><input tabindex="5" name="màu"
-                                                type="checkbox" value="2 màu ( đen + nâu )"><span data-checked="false">2
+                                        <div class="ladi-form-checkbox-item"><input tabindex="5" name="mau_sac"
+                                                type="radio" value="2 màu ( đen + nâu )" required><span data-checked="false">2
                                                 màu ( đen + nâu )</span></div>
                                     </div>
                                 </div>
@@ -5035,11 +5050,11 @@
                                 <div class="ladi-form-item ladi-form-checkbox ladi-form-checkbox-vertical">
                                     <div class="ladi-form-checkbox-box-item">
                                         <div class="ladi-form-checkbox-item"><input tabindex="6"
-                                                name="chọn số lượng túi" required="" type="radio"
+                                                name="so_luong" required="" type="radio"
                                                 value="Mua 1 Túi Giá 299K Miễn Ship"><span data-checked="false">Mua 1
                                                 Túi Giá 299K Miễn Ship</span></div>
                                         <div class="ladi-form-checkbox-item"><input tabindex="6"
-                                                name="chọn số lượng túi" required="" type="radio"
+                                                name="so_luong" required="" type="radio"
                                                 value="Mua 2 Túi Giá 499K Miễn Ship"><span data-checked="false">Mua 2
                                                 Túi Giá 499K Miễn Ship</span></div>
                                     </div>
@@ -5229,6 +5244,18 @@
           -webkit-animation: pulse 1s infinite;
           animation: pulse 1s infinite;
         }
+        @media only screen and (max-width: 768px) {
+            body, html {
+                overflow-x: hidden;
+                width: 100vw;
+            }
+    
+            .ladi-section, .ladi-container, img {
+                max-width: 100% !important;
+                height: auto !important;
+                left: 0 !important; 
+            }
+        }
     </style>
     <script src="./Túi du lịch da Microfiber_files/ladipagev3.min.js.download" type="text/javascript"></script>
     <script id="script_event_data"
@@ -5238,6 +5265,19 @@
     <script type="text/javascript" defer=""
         src="./Túi du lịch da Microfiber_files/ladipage.formdata.min.js.download"></script><span
         id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const gallery = document.querySelector('.ladi-gallery-view');
+            if(!gallery) return;
+            setInterval(() => {
+                if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 10) {
+                    gallery.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
+                }
+            }, 3000); 
+        });
+   </script>
 </body>
 
 </html>
