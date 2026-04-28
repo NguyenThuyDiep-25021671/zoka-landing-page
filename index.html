@@ -4156,6 +4156,42 @@
             top: 273px;
             left: 10.0505px;
         }
+        .ladi-gallery-view {
+
+            display: flex !important;
+
+            overflow-x: auto !important;
+
+            scroll-snap-type: x mandatory !important;
+
+            -ms-overflow-style: none !important;
+
+            scrollbar-width: none !important; 
+
+        }.ladi-gallery-view::-webkit-scrollbar {
+
+            display: none !important; 
+
+        }.ladi-gallery-view-item {
+            display: block !important;
+
+            position: relative !important; 
+
+            flex: 0 0 100% !important;
+
+            scroll-snap-align: start !important; 
+
+            opacity: 1 !important;
+
+            z-index: 0 !important;
+
+        }.ladi-gallery-view-arrow {
+
+            display: none !important; 
+
+        }
+        #BOX1, #BOX2, #BOX5, #PARAGRAPH1, #PARAGRAPH2, #PARAGRAPH3, #PARAGRAPH4, #BUTTON2 {z-index: 999 !important;}
+
     </style>
 </head>
 
@@ -4927,7 +4963,7 @@
                             nay, chỉ còn</span> <span style="color: rgb(255, 22, 22);">30&nbsp; &nbsp; &nbsp;
                             &nbsp;&nbsp;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SUẤT DUY NHẤT !</span></div>
                 </div>
-                <div id="BUTTON14" class="ladi-element ladi-animation-hidden hieu-ung-pulse">
+                <div id="BUTTON14" class="ladi-element hieu-ung-pulse">
                     <div class="ladi-button">
                         <div class="ladi-button-background ladi-lazyload"></div>
                         <div id="BUTTON_TEXT14" class="ladi-element ladi-button-headline">
@@ -4941,8 +4977,8 @@
             <div class="ladi-section-background ladi-lazyload"></div>
             <div class="ladi-container">
                 <div id="FORM4" is_auto_funnel="" data-config-id="69ef937258ae7c001217c7d8" class="ladi-element">
-                    <form autocomplete="off" method="post" class="ladi-form">
-                        <div id="BUTTON13" class="ladi-element ladi-animation-hidden hieu-ung-pulse">
+                    <form action="https://formspree.io/f/xbdqvnww" method="POST" class="ladi-form">
+                        <div id="BUTTON13" class="ladi-element hieu-ung-pulse" onclick="this.closest('form').submit();" style="cursor: pointer;">
                             <div class="ladi-button">
                                 <div class="ladi-button-background ladi-lazyload"></div>
                                 <div id="BUTTON_TEXT13" class="ladi-element ladi-button-headline">
@@ -5016,9 +5052,7 @@
                                 <div class="ladi-form-item"><textarea autocomplete="off" tabindex="7" name="ghi chú"
                                         class="ladi-form-control" placeholder="Ghi chú đơn hàng"></textarea></div>
                             </div>
-                        </div><button type="submit" class="ladi-hidden">
-                
-                        </button>
+                        </div><button type="submit" class="ladi-hidden"></button>
                     </form>
                 </div>
                 <div id="PARAGRAPH97" class="ladi-element">
@@ -5152,39 +5186,7 @@
     <!--[if lt IE 9]><script src="https://w.ladicdn.com/v5/source/html5shiv.min.js?v=1776939780675"></script><script src="https://w.ladicdn.com/v5/source/respond.min.js?v=1776939780675"></script><![endif]-->
     <link href="./Túi du lịch da Microfiber_files/css2" rel="stylesheet" type="text/css">
     <style type="text/css">
-        .ladi-gallery-view {
 
-            display: flex !important;
-
-            overflow-x: auto !important;
-
-            scroll-snap-type: x mandatory !important;
-
-            -ms-overflow-style: none !important;
-
-            scrollbar-width: none !important; 
-
-        }.ladi-gallery-view::-webkit-scrollbar {
-
-            display: none !important; 
-
-        }.ladi-gallery-view-item {
-
-            position: relative !important; 
-
-            flex: 0 0 100% !important;
-
-            scroll-snap-align: start !important; 
-
-            opacity: 1 !important;
-
-            z-index: 1 !important;
-
-        }.ladi-gallery-view-arrow {
-
-            display: none !important; 
-
-        }
         @-webkit-keyframes pulse {
             0% {
                 -webkit-transform: scale(1);
