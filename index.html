@@ -5423,6 +5423,68 @@
             setTimeout(applyMobileScale, 100);
         })();
     </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+    
+
+        var forms = document.querySelectorAll('form');
+
+    
+
+        forms.forEach(function(form) {
+
+            form.addEventListener("submit", function(event) {
+
+       
+
+                event.preventDefault(); 
+
+            
+
+                var data = new FormData(form);
+
+                var actionUrl = form.getAttribute("action"); 
+
+        
+
+                fetch(actionUrl, {
+
+                    method: 'POST',
+
+                    body: data,
+
+                    headers: {
+
+                        'Accept': 'application/json'
+
+                    }
+
+                }).then(response => {
+
+                    if (response.ok) {
+
+                        alert("Chúc mừng ! Bạn đã đặt hàng thành công.");
+
+                        form.reset(); 
+
+                    } else {
+
+                        alert("Xin lỗi ! Bạn chưa điền đầy đủ thông tin");
+
+                    }
+
+                }).catch(error => {
+
+                    alert("Lỗi kết nối mạng, vui lòng kiểm tra lại!");
+
+                });
+
+            });
+
+        });
+
+    });</script>
 </body>
 
 </html>
