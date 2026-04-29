@@ -5412,7 +5412,7 @@
             window.addEventListener("load", applyMobileScale);
             window.addEventListener("resize", applyMobileScale);
             window.addEventListener("orientationchange", function () {
-                setTimeout(applyMobileScale, 10);
+                setTimeout(applyMobileScale, 0);
             });
 
             if (window.visualViewport) {
@@ -5420,7 +5420,7 @@
             }
 
             requestAnimationFrame(applyMobileScale);
-            setTimeout(applyMobileScale, 10);
+            setTimeout(applyMobileScale, 0);
         })();
     </script>
 </body>
