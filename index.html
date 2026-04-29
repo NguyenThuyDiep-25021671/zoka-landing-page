@@ -5514,7 +5514,52 @@
 
     });
     </script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
 
+        var quantityRadios = document.querySelectorAll('input[name="so_luong"]');
+        var twoColorInput = document.querySelector('input[name="mau_sac"][value="2 màu ( đen + nâu )"]');
+
+        if (twoColorInput) {
+
+            var twoColorWrapper = twoColorInput.closest('.ladi-form-checkbox-item');
+
+            function checkQuantityAndColors() {
+
+                var selectedQuantity = document.querySelector('input[name="so_luong"]:checked');
+                if (selectedQuantity && selectedQuantity.value.includes("Mua 1 Túi")) {
+                    twoColorWrapper.style.display = 'none';
+
+                    if (twoColorInput.checked) {
+
+                        var blackInput = document.querySelector('input[name="mau_sac"][value="Màu đen"]');
+
+                        if (blackInput) {
+
+                            blackInput.click(); 
+
+                        }
+
+                    }
+
+                } else {
+
+                    twoColorWrapper.style.display = 'block';
+
+                }
+
+            }
+
+            quantityRadios.forEach(function(radio) {
+
+                radio.addEventListener('change', checkQuantityAndColors);
+
+            });
+
+            setTimeout(checkQuantityAndColors, 300);
+
+        }
+
+    });</script>
 </body>
 
 </html>
