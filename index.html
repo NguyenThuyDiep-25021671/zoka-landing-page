@@ -5250,20 +5250,26 @@
         }
 
         @media only screen and (max-width: 768px) {
+            :root {
+                --mobile-scale: 1;
+            }
+
+            html,
             body {
                 overflow-x: hidden !important;
-                width: 100vw !important;
+                width: 100% !important;
+                max-width: 100% !important;
                 position: relative !important;
                 margin: 0 !important;
             }
 
             .ladi-wraper {
-                width: 960px !important;
+                width: 420px !important;
                 position: absolute !important;
                 top: 0 !important;
                 left: 0 !important;
 
-                transform: scale(calc(100vw / 980)) !important;
+                transform: scale(var(--mobile-scale, 1)) !important;
                 transform-origin: top left !important;
             }
         }
@@ -5274,25 +5280,55 @@
                 bottom: 0 !important;
                 left: 0 !important;
                 width: 100% !important;
-                height: 85px !important;
                 z-index: 9999999 !important;
                 background-color: #ffffff !important;
                 transform: none !important;
+                overflow: hidden !important;
                 box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1) !important;
             }
 
             #SECTION12 .ladi-container {
-                width: 100% !important;
-                height: 100% !important;
+                width: 420px !important;
+                height: 85.5px !important;
                 left: 0 !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
+                display: block !important;
+                transform: scale(var(--mobile-scale, 1)) !important;
+                transform-origin: top left !important;
             }
 
             #BOX48 {
-                width: 100% !important;
+                width: 420px !important;
                 left: 0 !important;
+            }
+        }
+
+        @media only screen and (min-width: 769px) {
+            .ladi-wraper {
+                width: 420px !important;
+                margin: 0 auto !important;
+                position: relative !important;
+                transform: none !important;
+            }
+
+            #SECTION12 {
+                position: fixed !important;
+                width: 420px !important;
+                height: 85.5px !important;
+                left: 50% !important;
+                bottom: 0 !important;
+                margin: 0 !important;
+                transform: translateX(-50%) !important;
+                z-index: 9999999 !important;
+                overflow: hidden !important;
+                background-color: #ffffff !important;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            #SECTION12 .ladi-container {
+                width: 420px !important;
+                height: 85.5px !important;
+                left: 0 !important;
+                transform: none !important;
             }
         }
     </style>
@@ -5316,23 +5352,76 @@
                 }
             }, 1500);
         });
-        window.onload = function () {
+        (function () {
+            var designWidth = 420;
+            var barHeight = 85.5;
+            var barPlaceholder = null;
 
-            if (window.innerWidth <= 768) {
-
-                var wrapper = document.querySelector('.ladi-wraper');
-
-                var scale = window.innerWidth / 980;
-
-                document.body.style.height = (wrapper.offsetHeight * scale) + 'px';
-
+            function getViewportWidth() {
+                return document.documentElement.clientWidth
+                    || window.innerWidth
+                    || (window.visualViewport && window.visualViewport.width)
+                    || designWidth;
             }
 
-        };
-        document.addEventListener("DOMContentLoaded", function () {
-            var bar = document.getElementById('SECTION12');
-            if (bar) { document.body.appendChild(bar); }
-        });
+            function applyMobileScale() {
+                var wrapper = document.querySelector('.ladi-wraper');
+                var bar = document.getElementById('SECTION12');
+
+                if (window.innerWidth > 768) {
+                    document.documentElement.style.removeProperty('--mobile-scale');
+                    document.body.style.height = '';
+
+                    if (bar) {
+                        bar.style.width = '';
+                        bar.style.height = '';
+
+                        if (barPlaceholder && barPlaceholder.parentNode && bar.parentElement !== barPlaceholder.parentNode) {
+                            barPlaceholder.parentNode.insertBefore(bar, barPlaceholder);
+                        }
+                    }
+
+                    return;
+                }
+
+                var viewportWidth = getViewportWidth();
+                var scale = viewportWidth / designWidth;
+
+                document.documentElement.style.setProperty('--mobile-scale', scale);
+
+                if (bar && bar.parentElement !== document.body) {
+                    if (!barPlaceholder) {
+                        barPlaceholder = document.createComment('section12-placeholder');
+                        bar.parentNode.insertBefore(barPlaceholder, bar);
+                    }
+
+                    document.body.appendChild(bar);
+                }
+
+                if (wrapper) {
+                    document.body.style.height = (wrapper.offsetHeight * scale) + 'px';
+                }
+
+                if (bar) {
+                    bar.style.width = viewportWidth + 'px';
+                    bar.style.height = (barHeight * scale) + 'px';
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", applyMobileScale);
+            window.addEventListener("load", applyMobileScale);
+            window.addEventListener("resize", applyMobileScale);
+            window.addEventListener("orientationchange", function () {
+                setTimeout(applyMobileScale, 100);
+            });
+
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener("resize", applyMobileScale);
+            }
+
+            requestAnimationFrame(applyMobileScale);
+            setTimeout(applyMobileScale, 300);
+        })();
     </script>
 </body>
 
