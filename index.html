@@ -5423,36 +5423,41 @@
             setTimeout(applyMobileScale, 100);
         })();
         
-        document.addEventListener("DOMContentLoaded", function() {
+   document.addEventListener("DOMContentLoaded", function() {
 
-            var forms = document.querySelectorAll('form');
-
-            forms.forEach(function(form) {
-
-                var ladiButton = form.querySelector('[onclick*="submit()"]');
-
-                if (ladiButton) {
-
-                    ladiButton.removeAttribute('onclick'); 
-                    ladiButton.addEventListener("click", function(event) {
-
-                        event.preventDefault();
-
-                        sendFormData(form);
-
-                    });
-
-                }
+        var forms = document.querySelectorAll('form');
 
 
 
-    
+        forms.forEach(function(form) {
 
-            form.addEventListener("submit", function(event) {
+            var ladiButton = form.querySelector('[onclick*="submit()"]') || form.querySelector('button[type="submit"]');
 
-                event.preventDefault();
+        
 
-                sendFormData(form);
+            if (ladiButton) {
+
+                ladiButton.removeAttribute('onclick'); 
+
+                ladiButton.addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    handleOrder(form);
+
+                });
+
+            }
+
+
+
+            form.addEventListener("submit", function(e) {
+
+                e.preventDefault();
+
+                handleOrder(form);
 
             });
 
@@ -5460,11 +5465,11 @@
 
 
 
-        function sendFormData(form) {
+        function handleOrder(form) {
 
             if (!form.checkValidity()) {
 
-                form.reportValidity(); 
+                form.reportValidity();
 
                 return;
 
@@ -5474,9 +5479,9 @@
 
             var data = new FormData(form);
 
-            var actionUrl = form.getAttribute("action"); 
+            var actionUrl = form.getAttribute("action");
 
-        
+
 
             fetch(actionUrl, {
 
@@ -5484,19 +5489,19 @@
 
                 body: data,
 
-                headers: {
+                headers: { 'Accept': 'application/json' }
 
-                    'Accept': 'application/json'
-
-                }
-
-            }).then(response => {
+            }).then(function(response) {
 
                 if (response.ok) {
 
-                    alert("Chúc mừng ! Bạn đã đặt hàng thành công. ");
+                    setTimeout(function() {
 
-                    form.reset(); 
+                        alert("Chúc mừng ! Bạn đã đặt hàng thành công.");
+
+                        form.reset();
+
+                    }, 500);
 
                 } else {
 
@@ -5504,9 +5509,9 @@
 
                 }
 
-            }).catch(error => {
+            }).catch(function(error) {
 
-                alert("Lỗi kết nối mạng, vui lòng kiểm tra lại đường truyền!");
+                alert("Lỗi mạng rồi, bạn kiểm tra lại kết nối nhé!");
 
             });
 
