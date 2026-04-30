@@ -4209,15 +4209,10 @@
 
 
 
-        #BUTTON50:hover {
-            opacity: 0.85;
-            transition: 0.2s;
-        }
-
-        #BUTTON50:active {
-            transform: scale(0.92) !important;
+        #BOX24:active, #PARAGRAPH80:active {
+            transform: scale(0.9) !important;
+            opacity: 0.8;
             transition: 0.1s;
-        }
     </style>
 
 </head>
@@ -5354,16 +5349,40 @@
         src="./Túi du lịch da Microfiber_files/ladipage.formdata.min.js.download"></script><span
         id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const gallery = document.querySelector('.ladi-gallery-view');
             if (!gallery) return;
-            setInterval(() => {
+
+            gallery.parentElement.style.position = 'relative';
+
+            const btnStyle = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;font-size:20px;padding:10px 15px;cursor:pointer;z-index:99;border-radius:50%;user-select:none;';
+
+            const prevBtn = document.createElement('div');
+            prevBtn.innerHTML = '&#10094;';
+            prevBtn.style.cssText = btnStyle + 'left:10px;';
+
+            const nextBtn = document.createElement('div');
+            nextBtn.innerHTML = '&#10095;';
+            nextBtn.style.cssText = btnStyle + 'right:10px;';
+
+            gallery.parentElement.appendChild(prevBtn);
+            gallery.parentElement.appendChild(nextBtn);
+
+            prevBtn.addEventListener('click', function() {
+                gallery.scrollBy({ left: -gallery.clientWidth, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', function() {
+                gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
+            });
+
+            setInterval(function() {
                 if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 10) {
                     gallery.scrollTo({ left: 0, behavior: 'smooth' });
                 } else {
                     gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
                 }
-            }, 1500);
+            }, 2000);
         });
         (function () {
             var designWidth = 420;
