@@ -5455,13 +5455,13 @@
                 headers: { 'Accept': 'application/json' }
             }).then(function(res) {
                 if (res.ok) {
-                    showCustomAlert("Cam on ban! Ban da dat hang thanh cong. Chung toi se lien he som nhat.");
+                    showCustomAlert("Chúc mừng ! Bạn đã đặt hàng thành công.");
                     form.reset();
                 } else {
-                    showCustomAlert("Co loi xay ra, vui long thu lai nhe!");
+                    showCustomAlert("Xin lỗi ! Bạn vui lòng điền đủ thông tin.");
                 }
             }).catch(function(err) {
-                showCustomAlert("Loi ket noi mang, vui long kiem tra lai!");
+                showCustomAlert("Lỗi kết nối mạng,bạn vui lòng thử lại !");
             });
         }
 
