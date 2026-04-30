@@ -5423,101 +5423,93 @@
             setTimeout(applyMobileScale, 100);
         })();
         
-   document.addEventListener("DOMContentLoaded", function() {
-
+   
+    document.addEventListener("DOMContentLoaded", function() {
         var forms = document.querySelectorAll('form');
-
-
-
         forms.forEach(function(form) {
-
-            var ladiButton = form.querySelector('[onclick*="submit()"]') || form.querySelector('button[type="submit"]');
-
-        
-
-            if (ladiButton) {
-
-                ladiButton.removeAttribute('onclick'); 
-
-                ladiButton.addEventListener("click", function(e) {
-
+            var btn = form.querySelector('[onclick*="submit()"]') || form.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.removeAttribute('onclick');
+                btn.addEventListener("click", function(e) {
                     e.preventDefault();
-
                     e.stopPropagation();
-
-                    handleOrder(form);
-
+                    processForm(form);
                 });
-
             }
-
-
-
             form.addEventListener("submit", function(e) {
-
                 e.preventDefault();
-
-                handleOrder(form);
-
+                processForm(form);
             });
-
         });
 
-
-
-        function handleOrder(form) {
-
+        function processForm(form) {
             if (!form.checkValidity()) {
-
                 form.reportValidity();
-
                 return;
-
             }
-
-
-
             var data = new FormData(form);
-
-            var actionUrl = form.getAttribute("action");
-
-
-
-            fetch(actionUrl, {
-
+            var url = form.getAttribute("action");
+            fetch(url, {
                 method: 'POST',
-
                 body: data,
-
                 headers: { 'Accept': 'application/json' }
-
-            }).then(function(response) {
-
-                if (response.ok) {
-
-                    setTimeout(function() {
-
-                        alert("Chúc mừng ! Bạn đã đặt hàng thành công.");
-
-                        form.reset();
-
-                    }, 1500);
-
+            }).then(function(res) {
+                if (res.ok) {
+                    showCustomAlert("Cam on ban! Ban da dat hang thanh cong. Chung toi se lien he som nhat.");
+                    form.reset();
                 } else {
-
-                    alert("Xin lỗi ! Bạn chưa điền đầy đủ thông tin ");
-
+                    showCustomAlert("Co loi xay ra, vui long thu lai nhe!");
                 }
-
-            }).catch(function(error) {
-
-                alert("Lỗi mạng rồi, bạn kiểm tra lại kết nối nhé!");
-
+            }).catch(function(err) {
+                showCustomAlert("Loi ket noi mang, vui long kiem tra lai!");
             });
-
         }
 
+        function showCustomAlert(msg) {
+            var box = document.createElement("div");
+            box.style.position = "fixed";
+            box.style.top = "50%";
+            box.style.left = "50%";
+            box.style.transform = "translate(-50%, -50%)";
+            box.style.background = "#ffffff";
+            box.style.padding = "25px";
+            box.style.border = "2px solid #4CAF50";
+            box.style.borderRadius = "12px";
+            box.style.boxShadow = "0 10px 25px rgba(0,0,0,0.2)";
+            box.style.zIndex = "99999999";
+            box.style.textAlign = "center";
+            box.style.fontFamily = "Arial, sans-serif";
+            box.style.width = "80%";
+            box.style.maxWidth = "350px";
+        
+            var text = document.createElement("p");
+            text.innerText = msg;
+            text.style.fontSize = "16px";
+            text.style.color = "#333333";
+            text.style.lineHeight = "1.5";
+            text.style.margin = "0 0 20px 0";
+            box.appendChild(text);
+        
+            var closeBtn = document.createElement("button");
+            closeBtn.innerText = "Dong";
+            closeBtn.style.padding = "10px 30px";
+            closeBtn.style.background = "#4CAF50";
+            closeBtn.style.color = "#ffffff";
+            closeBtn.style.border = "none";
+            closeBtn.style.borderRadius = "6px";
+            closeBtn.style.fontSize = "16px";
+            closeBtn.style.fontWeight = "bold";
+            closeBtn.style.cursor = "pointer";
+        
+            closeBtn.onclick = function() {
+                document.body.removeChild(box);
+            };
+        
+            box.appendChild(closeBtn);
+            document.body.appendChild(box);
+        }
     });
+
     </script>
     <script>document.addEventListener("DOMContentLoaded", function() {
 
