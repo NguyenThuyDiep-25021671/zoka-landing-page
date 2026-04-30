@@ -4206,7 +4206,20 @@
         #PARAGRAPH6 {
             z-index: 999 !important;
         }
+
+
+
+        #BUTTON50:hover {
+            opacity: 0.85;
+            transition: 0.2s;
+        }
+
+        #BUTTON50:active {
+            transform: scale(0.92) !important;
+            transition: 0.1s;
+        }
     </style>
+
 </head>
 
 <body class=""><svg xmlns="http://www.w3.org/2000/svg"
@@ -4752,13 +4765,11 @@
                 <div id="PARAGRAPH79" class="ladi-element">
                     <div class="ladi-paragraph">3&nbsp; &nbsp; &nbsp;(5.8k)</div>
                 </div>
-                <div id="BOX24" class="ladi-element" onclick="window.location.href='https://www.facebook.com/profile.php?id=61588898827211'" style="cursor: pointer;">
-
-                    <div class="ladi-box ladi-lazyload"></div>
-                </div>
-                <div id="PARAGRAPH80" class="ladi-element" onclick="window.location.href='https://www.facebook.com/profile.php?id=61588898827211'" style="cursor: pointer;">
-
-                    <div class="ladi-paragraph">Truy cập</div>
+                <div id="BUTTON50" class="ladi-element" onclick="var f='https://www.facebook.com/profile.php?id=61588898827211'; if(/Android|iPhone|iPad/i.test(navigator.userAgent)){window.location.href=f;}else{window.open(f,'_blank');}" style="cursor: pointer;">
+                    <div class="ladi-button">
+                        <div class="ladi-button-background"></div>
+                        <div class="ladi-button-text ladi-transition">Truy cap</div>
+                    </div>
                 </div>
                 <div id="BOX26" class="ladi-element">
                     <div class="ladi-box ladi-transition ladi-lazyload"></div>
