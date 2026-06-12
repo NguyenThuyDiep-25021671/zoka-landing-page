@@ -5471,7 +5471,7 @@
         })();
         
    
-    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
         var forms = document.querySelectorAll('form');
         forms.forEach(function(form) {
             var btn = form.querySelector('[onclick*="submit()"]') || form.querySelector('button[type="submit"]');
@@ -5481,7 +5481,7 @@
                     e.preventDefault();
                     e.stopPropagation();
                     processForm(form);
-                });
+                 });
             }
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
@@ -5496,20 +5496,27 @@
             }
             var data = new FormData(form);
             var url = form.getAttribute("action");
+
+            var orderValue = 299000.00;
+            var quantityInput = form.querySelector('input[name="so_luong"]:checked');
+            if (quantityInput && quantityInput.value.includes("499K")) {
+                orderValue = 499000.00;
+            }
+
             fetch(url, {
                 method: 'POST',
                 body: data,
                 headers: { 'Accept': 'application/json' }
             }).then(function(res) {
                 if (res.ok) {
-                    fbq('track', 'Purchase', {currency: "VND", value: 299000.00});
+                    fbq('track', 'Purchase', {currency: "VND", value: orderValue});
                     showCustomAlert("Chúc mừng ! Bạn đã đặt hàng thành công.");
                     form.reset();
                 } else {
                     showCustomAlert("Xin lỗi ! Bạn vui lòng điền đủ thông tin.");
                 }
             }).catch(function(err) {
-                showCustomAlert("Lỗi kết nối mạng,bạn vui lòng thử lại !");
+                showCustomAlert("Lỗi kết nối mạng, bạn vui lòng thử lại !");
             });
         }
 
@@ -5529,7 +5536,7 @@
             box.style.fontFamily = "Arial, sans-serif";
             box.style.width = "80%";
             box.style.maxWidth = "350px";
-        
+    
             var text = document.createElement("p");
             text.innerText = msg;
             text.style.fontSize = "16px";
@@ -5537,7 +5544,7 @@
             text.style.lineHeight = "1.5";
             text.style.margin = "0 0 20px 0";
             box.appendChild(text);
-        
+    
             var closeBtn = document.createElement("button");
             closeBtn.innerText = "Đóng";
             closeBtn.style.padding = "10px 30px";
@@ -5548,15 +5555,15 @@
             closeBtn.style.fontSize = "16px";
             closeBtn.style.fontWeight = "bold";
             closeBtn.style.cursor = "pointer";
-        
-            closeBtn.onclick = function() { 
-                document.body.removeChild(box);
+    
+            closeBtn.onclick = function() {
+               document.body.removeChild(box);
             };
-        
+    
             box.appendChild(closeBtn);
             document.body.appendChild(box);
-        }
-    });
+            }   
+        });
 
     </script>
     <script>document.addEventListener("DOMContentLoaded", function() {
